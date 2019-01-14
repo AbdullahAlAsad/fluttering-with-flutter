@@ -31,7 +31,7 @@ class DbHelper {
   Future<Database> initializeDb() async {
     Directory dir = await getApplicationDocumentsDirectory();
     String path = dir.path + "todos.db";
-    var dbTodos = await openDatabase(path,version: 1,onCreate: _createDb)
+    var dbTodos = await openDatabase(path,version: 1,onCreate: _createDb);
     return dbTodos;
 
   }
@@ -42,5 +42,26 @@ class DbHelper {
       "$colDescription TEXT, $colPriority INTEGER, $colDate TEXT"
     );
   }
+
+  Future<int> insertTodo(Todo todo) async {
+    Database db = await this.db;
+    var result = await db.insert(tblToDo, todo.toMap());
+    return result;
+  }
+
+  Future<List> getTodos() async {
+    Database db = await this.db;
+    var result = await db.rawQuery("SELECT * FROM $tblToDo order by $colPriority ASC");
+    return result;
+  }
+
+  Future<int> getCount() async {
+    Database db = await this.db;
+    var result = Sqflite.firstIntValue(
+      await db.rawQuery("select count (*) from $tblToDo")
+    );
+    return result;
+  }
+
 
 }
