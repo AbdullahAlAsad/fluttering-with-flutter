@@ -9,16 +9,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // List<Todo> todos = List<Todo>();
-    // DbHelper helper = DbHelper();
-    // helper.initializeDb().then(
-    //   (result) => helper.getTodos().then((result) => todos = result)
-    //   );
-    //   DateTime today = DateTime.now();
+/*     List<Todo> todos = List<Todo>();
+    DbHelper helper = DbHelper();
+    helper.initializeDb().then(
+      (result) => helper.getTodos().then((result) => todos = result)
+      );
+      DateTime today = DateTime.now();
 
-    //   Todo todo = Todo("_title", 3, today.toString(),"And make sure to check");
+      Todo todo = Todo("Buy Melon", 4, today.toString(),"And make sure they are good");
+      helper.insertTodo(todo); */
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Todos',
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,

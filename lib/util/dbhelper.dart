@@ -39,7 +39,7 @@ class DbHelper {
   void _createDb(Database db, int newVersion) async {
     await db.execute(
       "CREATE TABLE $tblToDo($colId INTEGER PRIMARY KEY, $colTitle TEXT, " +
-      "$colDescription TEXT, $colPriority INTEGER, $colDate TEXT"
+      "$colDescription TEXT, $colPriority INTEGER, $colDate TEXT)"
     );
   }
 
